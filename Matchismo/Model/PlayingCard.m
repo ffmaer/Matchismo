@@ -48,13 +48,28 @@
         _rank = rank;
     }
 }
+#define SUIT_MATCH_SCORE 4;
+#define RANK_MATCH_SCORE 16;
+#define NOT_MATCH_SCORE -2;
 
--(BOOL)isEqual2Card: (PlayingCard *)card{
-    return ([self.suit isEqualToString:card.suit] || self.rank == card.rank);
++(NSInteger) match: (NSMutableArray *)cards{
+    NSInteger score = NOT_MATCH_SCORE;
+    BOOL matchSuit=YES;
+    BOOL matchRank=YES;
+    PlayingCard *firstCard = cards[0];
+    for(PlayingCard *card in cards){
+        if(![firstCard.suit isEqualToString:card.suit]){
+            matchSuit = NO;
+        }
+        if(firstCard.rank != card.rank){
+            matchRank = NO;
+        }
+    }
+    if(matchSuit){
+        score = SUIT_MATCH_SCORE;
+    }else if (matchRank){
+        score = RANK_MATCH_SCORE;
+    }
+    return score;
 }
--(BOOL)isEqual3Card:(PlayingCard *)card1 card2:(PlayingCard *)card2
-{
-    return (([self.suit isEqualToString:card1.suit ]&& [self.suit isEqualToString:card2.suit] )|| (self.rank == card1.rank && self.rank == card2.rank));
-}
-
 @end

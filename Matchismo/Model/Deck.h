@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PlayingCard.h"
+#import "Card.h"
 
 @interface Deck : NSObject
 
-- (void)addCard:(PlayingCard *)card atTop:(BOOL)atTop;
-- (PlayingCard *)drawRandomCard;
+- (void)addCard:(Card *)card atTop:(BOOL)atTop;
+- (Card *)drawRandomCard;
 
 @end

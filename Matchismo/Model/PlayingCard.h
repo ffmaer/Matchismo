@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Maer Studios Inc. All rights reserved.
 //
 
-@interface PlayingCard : NSObject
+
+#import "Card.h"
+
+@interface PlayingCard : Card
 
 @property (strong,nonatomic) NSString *suit;
 @property (nonatomic) NSInteger rank;
-
--(NSString *)contents;
 +(NSArray *)validSuits;
 +(NSInteger)maxRank;
--(BOOL)isEqual2Card:(PlayingCard *)card;
--(BOOL)isEqual3Card:(PlayingCard *)card card2:(PlayingCard *)card2;
++(NSInteger) match: (NSMutableArray *)cards;
 @end
